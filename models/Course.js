@@ -33,9 +33,14 @@ const courseSchema = new mongoose.Schema({
     thumbNail: {
         type: String,
     },
-    tag: {
+    category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Tag",
+        ref: "User",
+        required: true,
+    },
+    tag: {
+        type: [String],
+        required: true,
     },
     studentsEnrolled: [
         {
@@ -43,7 +48,7 @@ const courseSchema = new mongoose.Schema({
             ref: "User",
             required: true,
         }
-    ]
+    ],
 })
 
 module.exports = mongoose.model("Course", courseSchema);
